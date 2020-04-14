@@ -94,17 +94,44 @@ const player = {
     })
     return (myString);
   },
-  mySwap(liste,i,j){
-    let temp = liste[i];
-    liste[i] = liste[j];
-    liste[j] = temp;
+  mySwap(i,j){
+    let temp = this.backpack[i];
+    this.backpack[i] = this.backpack[j];
+    this.backpack[j] = temp;
   },
-  triAlpha(liste){
-    let i;
+  triAlpha(){
+    let pass=0;
+    let i = 0;
+    let j =0;
     let index1;
     let index2;
-    if(index1.)
+    for(let tour = 0;tour<this.backpack.length-1;tour++){
+      index1 = this.backpack[tour]
+      index2 = this.backpack[tour+1]
+      if(!isNaN(index1[i])){
+        i++;
+      }
+      if(!isNaN(index2[j])){
+        j++;
+      }
+      if(isNaN(index1[i]) && isNaN(index2[j])){
+        if(index1.charCodeAt(i) > index2.charCodeAt(j)){
+          mySwap(liste,i,j);
+        } else if(index1.charCodeAt(i) < index2.charCodeAt(j)){
+          pass;
+        } else {
+          while(index1.charCodeAt(i) == index2.charCodeAt(j)){
+            if(index1.charCodeAt(i) > index2.charCodeAt(j)){
+              mySwap(tour,tour+1);
+            } else if(index1.charCodeAt(i) < index2.charCodeAt(j)){
+              pass++;
+            }
+          }
+        }
+      }
+    }
+    return(this.backpack);
   }
 }
 
-console.log(player.desc());
+console.log(player.triAlpha());
