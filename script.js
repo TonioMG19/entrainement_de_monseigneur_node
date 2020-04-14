@@ -100,7 +100,10 @@ const player = {
     liste[j] = temp;
   },
   triAlpha(liste){
-    let index1
+    let i;
+    let index1;
+    let index2;
+    if(index1.)
   }
 }
 
