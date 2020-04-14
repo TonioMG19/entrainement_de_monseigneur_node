@@ -116,7 +116,7 @@ const player = {
       }
       if(isNaN(index1[i]) && isNaN(index2[j])){
         if(index1.charCodeAt(i) > index2.charCodeAt(j)){
-          mySwap(liste,i,j);
+          mySwap(tour,tour+1);
         } else if(index1.charCodeAt(i) < index2.charCodeAt(j)){
           pass;
         } else {
