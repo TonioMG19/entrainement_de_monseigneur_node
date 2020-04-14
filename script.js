@@ -45,3 +45,10 @@ for(let index = 0; index < tableauCouleur.length;index++){
       console.log(`La couleur ${tableauCouleur[index]} n'était pas attendue`)
   }
 }*/
+
+/*Exercice 4*/
+/*function fonctionAdition(nombre1,nombre2){
+  return (nombre1 + nombre2);
+}
+
+console.log(fonctionAdition(22,5));*/
