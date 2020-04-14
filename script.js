@@ -135,3 +135,4 @@ const player = {
 }
 
 console.log(player.triAlpha());
+console.log();
