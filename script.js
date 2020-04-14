@@ -1,7 +1,7 @@
-let A = 0;
-{
-  A = 1;
-  let B = 't';
+/* Exercice 1 */
+const age = 17;
+if(age>=18){
+  console.log('Majeur');
+} else {
+  console.log('Mineur');
 }
-console.log(A);
-console.log(B);
