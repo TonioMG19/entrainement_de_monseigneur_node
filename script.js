@@ -66,3 +66,42 @@ console.log(fonctionAdition(22,5));*/
 }
 
 console.log(indexListe(['bleu','rouge','vert','jaune']))*/
+
+/*Entrainement 1*/
+/*const stylo = {
+  type: "plume",
+  couleur: "noir",
+  marque: "Bic",
+  prix: "1€50",
+  presentation(){
+    return (`Bonjour, je suis un stylo à ${this.type}, ma couleur est le ${this.couleur}, je coûte ${this.prix} et je suis de la marque ${this.marque}`);
+  }
+}
+
+console.log(stylo.presentation());*/
+
+/*Entrainement 2*/
+const player = {
+  nom: 'Le Duc',
+  prenom: 'Jean-Luc',
+  sexe: 'Homme',
+  tenue: 'une Chemise hawaïenne',
+  backpack: ['1 compote','39 barres chocolatés','2 cuitochettes'],
+  desc(){
+    let myString = `Je suis un(e) ${this.sexe}, je m'appelle ${this.prenom} ${this.nom}. Je suis habillé(e) avec ${this.tenue} et j'ai un sac à dos ! \nDans mon sac à dos, il y a :\n`;
+    this.backpack.forEach(objet =>{
+      myString += objet + "\n";
+    })
+    return (myString);
+  },
+  mySwap(liste,i,j){
+    let temp = liste[i];
+    liste[i] = liste[j];
+    liste[j] = temp;
+  },
+  triAlpha(liste){
+    let index1
+  }
+}
+
+console.log(player.desc());
