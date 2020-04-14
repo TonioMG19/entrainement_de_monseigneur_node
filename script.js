@@ -52,3 +52,17 @@ for(let index = 0; index < tableauCouleur.length;index++){
 }
 
 console.log(fonctionAdition(22,5));*/
+
+/*Exericie 5*/
+const indexListe = maListe =>{
+  maString = ""
+  for(let index = 0;index < maListe.length;index++){
+    maString += `La couleur ${maListe[index]} se trouve à l'index ${index}`;
+    if(index < maListe.length - 1){
+      maString += '\n';
+    }
+  }
+  return (maString);
+}
+
+console.log(indexListe(['bleu','rouge','vert','jaune']))
