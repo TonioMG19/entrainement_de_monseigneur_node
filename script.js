@@ -7,7 +7,7 @@ if(age>=18){
 }*/
 
 /*Exercice 2*/
-const color = 'bleu';
+/*const color = 'blu';
 switch (color){
   case 'bleu':
     console.log('La couleur est bleu');
@@ -22,5 +22,26 @@ switch (color){
     console.log('La couleur est jaune');
     break;
   default:
-    console.log(`La couleur était ${color}`)
-}
+    console.log(`La couleur était : ${color}`)
+}*/
+
+/*Exercice 3*/
+/*let tableauCouleur = ['bleu','rouge','vert','jaune']
+for(let index = 0; index < tableauCouleur.length;index++){
+  switch (tableauCouleur[index]){
+    case 'bleu':
+      console.log(`La couleur à l'index ${index} est : bleu`);
+      break;
+    case 'rouge':
+      console.log(`La couleur à l'index ${index} est : rouge`);
+      break;
+    case 'vert':
+      console.log(`La couleur à l'index ${index} est : vert`);
+      break;
+    case 'jaune':
+      console.log(`La couleur à l'index ${index} est : jaune`);
+      break;
+    default:
+      console.log(`La couleur ${tableauCouleur[index]} n'était pas attendue`)
+  }
+}*/
