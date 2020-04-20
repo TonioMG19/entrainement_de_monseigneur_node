@@ -86,7 +86,7 @@ const player = {
   prenom: 'Jean-Luc',
   sexe: 'Homme',
   tenue: 'une Chemise hawaïenne',
-  backpack: ['1 compote','39 barres chocolatés','2 cuitochettes','3 ananas'],
+  backpack: ['1 compote','39 barres chocolatés','2 rapes a fromage','3 ananas'],
   desc(){
     let myString = `Je suis un(e) ${this.sexe}, je m'appelle ${this.prenom} ${this.nom}. Je suis habillé(e) avec ${this.tenue} et j'ai un sac à dos ! \nDans mon sac à dos, il y a :\n`;
     this.backpack.forEach(objet =>{
@@ -94,19 +94,20 @@ const player = {
     })
     return (myString);
   },
-  mySwap(i,j){
-    let temp = this.backpack[i];
-    this.backpack[i] = this.backpack[j];
-    this.backpack[j] = temp;
+  mySwap(i){
+    let temp = this.backpack[i+1];
+    this.backpack[i+1] = this.backpack[i];
+    this.backpack[i] = temp;
   },
   triAlpha(){
     let liste = this.backpack;
     const len = this.backpack.length;
     let i = 0;
     let r = 1;
-    while(i<len-1){
+    while(i<len){
       let objet1 = liste[i];
       let objet2 = liste[r];
+      console.log(`${objet1} et ${objet2}`);
       let j = 0;
       let k = 0
       while((objet1.charCodeAt(j) < 97 || objet1.charCodeAt(j) > 122)&&(objet2.charCodeAt(k) < 97 || objet2.charCodeAt(k) > 122)){
@@ -118,7 +119,7 @@ const player = {
         }
       }
       if(objet1.charCodeAt(j) > objet2.charCodeAt(k)){
-        this.mySwap(i,i+1);
+        this.mySwap(j);
       }
       r++;
       if(r>=liste.length-1){
