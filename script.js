@@ -86,7 +86,7 @@ const player = {
   prenom: 'Jean-Luc',
   sexe: 'Homme',
   tenue: 'une Chemise hawaïenne',
-  backpack: ['1 compote','39 barres chocolatés','2 cuitochettes'],
+  backpack: ['1 compote','39 barres chocolatés','2 cuitochettes','3 ananas'],
   desc(){
     let myString = `Je suis un(e) ${this.sexe}, je m'appelle ${this.prenom} ${this.nom}. Je suis habillé(e) avec ${this.tenue} et j'ai un sac à dos ! \nDans mon sac à dos, il y a :\n`;
     this.backpack.forEach(objet =>{
@@ -100,34 +100,30 @@ const player = {
     this.backpack[j] = temp;
   },
   triAlpha(){
-    let pass=0;
+    let liste = this.backpack;
+    const len = this.backpack.length;
     let i = 0;
-    let j =0;
-    let index1;
-    let index2;
-    for(let tour = 0;tour<this.backpack.length-1;tour++){
-      index1 = this.backpack[tour]
-      index2 = this.backpack[tour+1]
-      if(!isNaN(index1[i])){
-        i++;
-      }
-      if(!isNaN(index2[j])){
-        j++;
-      }
-      if(isNaN(index1[i]) && isNaN(index2[j])){
-        if(index1.charCodeAt(i) > index2.charCodeAt(j)){
-          mySwap(tour,tour+1);
-        } else if(index1.charCodeAt(i) < index2.charCodeAt(j)){
-          pass;
-        } else {
-          while(index1.charCodeAt(i) == index2.charCodeAt(j)){
-            if(index1.charCodeAt(i) > index2.charCodeAt(j)){
-              mySwap(tour,tour+1);
-            } else if(index1.charCodeAt(i) < index2.charCodeAt(j)){
-              pass++;
-            }
-          }
+    let r = 1;
+    while(i<len-1){
+      let objet1 = liste[i];
+      let objet2 = liste[r];
+      let j = 0;
+      let k = 0
+      while((objet1.charCodeAt(j) < 97 || objet1.charCodeAt(j) > 122)&&(objet2.charCodeAt(k) < 97 || objet2.charCodeAt(k) > 122)){
+        if(objet1.charCodeAt(j) < 97 || objet1.charCodeAt(j) > 122){
+          j++;
         }
+        if(objet2.charCodeAt(k) < 97 || objet2.charCodeAt(k) > 122){
+          k++;
+        }
+      }
+      if(objet1.charCodeAt(j) > objet2.charCodeAt(k)){
+        this.mySwap(i,i+1);
+      }
+      r++;
+      if(r>=liste.length-1){
+        i++;
+        r=1;
       }
     }
     return(this.backpack);
@@ -135,4 +131,3 @@ const player = {
 }
 
 console.log(player.triAlpha());
-console.log();
