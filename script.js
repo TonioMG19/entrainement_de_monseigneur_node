@@ -94,40 +94,35 @@ const player = {
     })
     return (myString);
   },
-  mySwap(i){
-    let temp = this.backpack[i+1];
-    this.backpack[i+1] = this.backpack[i];
+  mySwap(i,j){
+    let temp = this.backpack[i];
+    this.backpack[j] = this.backpack[i];
     this.backpack[i] = temp;
   },
   triAlpha(){
-    let liste = this.backpack;
-    const len = this.backpack.length;
-    let i = 0;
-    let r = 1;
-    while(i<len){
-      let objet1 = liste[i];
-      let objet2 = liste[r];
-      console.log(`${objet1} et ${objet2}`);
-      let j = 0;
-      let k = 0
-      while((objet1.charCodeAt(j) < 97 || objet1.charCodeAt(j) > 122)&&(objet2.charCodeAt(k) < 97 || objet2.charCodeAt(k) > 122)){
-        if(objet1.charCodeAt(j) < 97 || objet1.charCodeAt(j) > 122){
-          j++;
-        }
-        if(objet2.charCodeAt(k) < 97 || objet2.charCodeAt(k) > 122){
-          k++;
-        }
-      }
-      if(objet1.charCodeAt(j) > objet2.charCodeAt(k)){
-        this.mySwap(j);
-      }
-      r++;
-      if(r>=liste.length-1){
-        i++;
-        r=1;
-      }
+    let myListe = [];
+    for(let i = 0; i < this.backpack.length; i++){
+      myListe[i] = this.backpack[i].split(' ');
     }
-    return(this.backpack);
+    let myOtherList = [];
+    for(let i =0;i<this.backpack.length;i++){
+      myOtherList[i] = myListe[i][1];
+    }
+    myOtherList = myOtherList.sort();
+    let myListe2 = [];
+    for(let i = 0;i<this.backpack.length;i++){
+      let actual = myOtherList[i];
+      if(actual==myListe[1][1]){
+        myListe2[i] = myListe[1];
+      }else if(actual==myListe[2][1]){
+        myListe2[i] = myListe[2];
+      }else if(actual==myListe[3][1]){
+        myListe2[i] = myListe[3];
+      }
+      console.log(actual);
+      console.log(myListe2);
+    }
+    return (myListe2);
   }
 }
 
