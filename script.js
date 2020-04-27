@@ -151,16 +151,28 @@ entreeStandard.on("data",function(data){
   }
 });*/
 /*Mini-jeu*/
-let entreeStandard = process.stdin;
-entreeStandard.setEncoding("utf-8");
 let nbreAllumette = 13;
 let max = 3;
+process.argv.forEach(function(val, index, array){
+  if (array.length != 4){
+    console.log("CODE 84 !");
+    process.exit();
+  }
+  if(isNaN(parseInt(array[2])) && isNaN(parseInt(array[3]))){
+    console.log("CODE 84 !");
+    process.exit();
+  }
+  nbreAllumette = array[2];
+  max = array[3];
+});
+let entreeStandard = process.stdin;
+entreeStandard.setEncoding("utf-8");
+let actualNumber = 0;
 let turn = 0;
-let acutalNumber = 0;
 console.log("Joueur 1 à toi de jouer !")
 entreeStandard.on("data", function(data){
   actualNumber = parseInt(data);
-  if(data != 1 && data != 2 && data != 3 && data != '1' && data != '2' && data != '3'){
+  if(isNaN(data) || data > max+1 || data < 1){
     console.log("Veuillez réessayer. Ce que vous avez entré n'est pas valide pour rappel il doit forcément être un nombre compris entre 1 et "+max);
     console.log(data);
     return;
@@ -173,8 +185,10 @@ entreeStandard.on("data", function(data){
   }
   if(nbreAllumette === 1 && turn%2 == 0){
     console.log("L'IA a gagné !");
+    process.exit();
   }else if(nbreAllumette === 1 && turn%2 != 0){
     console.log("Bien joué tu as gagné joueur 1 !");
+    process.exit();
   }
   if(turn%2 !== 0){
     console.log("Au tour de l'IA !");
@@ -188,10 +202,10 @@ entreeStandard.on("data", function(data){
   }
   if(nbreAllumette === 1 && turn%2 == 0){
     console.log("L'IA a gagné !");
-    return;
+    process.exit();
   }else if(nbreAllumette === 1 && turn%2 != 0){
     console.log("Bien joué tu as gagné joueur 1 !");
-    return;
+    process.exit();
   }
   return;
 });
