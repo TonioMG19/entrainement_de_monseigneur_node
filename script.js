@@ -138,3 +138,43 @@ console.log(stylo.presentation());*/
   }
 }
 */
+/*Entrainement 3*/
+/*let entreeStandard = process.stdin;
+entreeStandard.setEncoding("utf-8");
+console.log("Dites quelque chose. \nDites \'exit\' pour quitter.");
+entreeStandard.on("data",function(data){
+  if (data === "exit\n" || data === "exit\r\n"){
+    console.log("Récupération des informations complète, fermeture du programme.");
+    process.exit();
+  }else if (data !== "\r\n" && data !== "\n"){
+    console.log(`Vous avez dit : ${data}`);
+  }
+});*/
+/*Mini-jeu*/
+let entreeStandard = process.stdin;
+entreeStandard.setEncoding("utf-8");
+let nbreAllumette = 13;
+let max = 3;
+let turn = 0;
+let acutalNumber = 0;
+console.log("Joueur 1 à toi de jouer !")
+entreeStandard.on("data", function(data){
+  if(!isNaN(entreeStandard)){
+    console.log("Veuillez réessayer.");
+    return;
+  }
+  acutalNumber = parseInt(entreeStandard);
+  if(entreeStandard > max || entreeStandard < 1){
+    console.log(`Seul les nombres en 1 et ${max} sont autorisée.`);
+    return;
+  }
+  nbreAllumette -= entreeStandard;
+  turn++;
+  console.log(`Il reste ${nbreAllumette} allumettes !`);
+  if(turn%2 !== 0){
+    console.log("Au tour de l'IA !");
+    let toSuppr = Math.floor(Math.random()*(max-1)) + 1;
+    nbreAllumette -= toSuppr;
+    console.log(`Il reste ${nbreAllumette} allumettes.`);
+  }
+});
