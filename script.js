@@ -159,22 +159,39 @@ let turn = 0;
 let acutalNumber = 0;
 console.log("Joueur 1 à toi de jouer !")
 entreeStandard.on("data", function(data){
-  if(!isNaN(entreeStandard)){
-    console.log("Veuillez réessayer.");
+  actualNumber = parseInt(data);
+  if(data != 1 && data != 2 && data != 3 && data != '1' && data != '2' && data != '3'){
+    console.log("Veuillez réessayer. Ce que vous avez entré n'est pas valide pour rappel il doit forcément être un nombre compris entre 1 et "+max);
+    console.log(data);
     return;
   }
-  acutalNumber = parseInt(entreeStandard);
-  if(entreeStandard > max || entreeStandard < 1){
-    console.log(`Seul les nombres en 1 et ${max} sont autorisée.`);
-    return;
-  }
-  nbreAllumette -= entreeStandard;
+  nbreAllumette -= actualNumber;
   turn++;
   console.log(`Il reste ${nbreAllumette} allumettes !`);
+  if(nbreAllumette === 2){
+    max = 2;
+  }
+  if(nbreAllumette === 1 && turn%2 == 0){
+    console.log("L'IA a gagné !");
+  }else if(nbreAllumette === 1 && turn%2 != 0){
+    console.log("Bien joué tu as gagné joueur 1 !");
+  }
   if(turn%2 !== 0){
     console.log("Au tour de l'IA !");
     let toSuppr = Math.floor(Math.random()*(max-1)) + 1;
     nbreAllumette -= toSuppr;
     console.log(`Il reste ${nbreAllumette} allumettes.`);
+    turn++;
   }
+  if(nbreAllumette === 2){
+    max = 2;
+  }
+  if(nbreAllumette === 1 && turn%2 == 0){
+    console.log("L'IA a gagné !");
+    return;
+  }else if(nbreAllumette === 1 && turn%2 != 0){
+    console.log("Bien joué tu as gagné joueur 1 !");
+    return;
+  }
+  return;
 });
