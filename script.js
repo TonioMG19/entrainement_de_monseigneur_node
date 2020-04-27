@@ -81,7 +81,7 @@ console.log(indexListe(['bleu','rouge','vert','jaune']))*/
 console.log(stylo.presentation());*/
 
 /*Entrainement 2*/
-const player = {
+/*const player = {
   nom: 'Le Duc',
   prenom: 'Jean-Luc',
   sexe: 'Homme',
@@ -89,6 +89,7 @@ const player = {
   backpack: ['1 compote','39 barres chocolatés','2 rapes a fromage','3 ananas'],
   desc(){
     let myString = `Je suis un(e) ${this.sexe}, je m'appelle ${this.prenom} ${this.nom}. Je suis habillé(e) avec ${this.tenue} et j'ai un sac à dos ! \nDans mon sac à dos, il y a :\n`;
+    this.triAlpha();
     this.backpack.forEach(objet =>{
       myString += objet + "\n";
     })
@@ -112,18 +113,28 @@ const player = {
     let myListe2 = [];
     for(let i = 0;i<this.backpack.length;i++){
       let actual = myOtherList[i];
-      if(actual==myListe[1][1]){
+      if(actual==myListe[0][1]){
+        myListe2[i] = myListe[0];
+      }else if(actual==myListe[1][1]){
         myListe2[i] = myListe[1];
       }else if(actual==myListe[2][1]){
         myListe2[i] = myListe[2];
       }else if(actual==myListe[3][1]){
         myListe2[i] = myListe[3];
       }
-      console.log(actual);
-      console.log(myListe2);
     }
-    return (myListe2);
+    let str = "";
+    for(let i=0;i < myListe2.length;i++){
+      str = "";
+      for(let j = 0; j < myListe2[i].length; j++){
+        str += myListe2[i][j];
+        if(j<myListe2[i].length-1){
+          str+=' ';
+        }
+      }
+      this.backpack[i] = str;
+    }
+    return;
   }
 }
-
-console.log(player.triAlpha());
+*/
